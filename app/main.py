@@ -17,13 +17,11 @@ class PrintBook:
 
     @staticmethod
     def console(content: str, title: str) -> None:
-        print(f"Printing the book: {title}...")
-        print(content)
+        print(f"Printing the book: {title}...\n{content}")
 
     @staticmethod
     def reverse(content: str, title: str) -> None:
-        print(f"Printing the book in reverse: {title}...")
-        print(content[::-1])
+        print(f"Printing the book in reverse: {title}...\n{content[::-1]}")
 
 
 class SerializeBook:
