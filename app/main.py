@@ -3,44 +3,42 @@ import xml.etree.ElementTree as ElementTree
 
 
 class DisplayBook:
-    def __init__(self, content: str) -> None:
-        self.content = content
 
-    def console(self) -> None:
-        print(self.content)
+    @staticmethod
+    def console(content: str, *_) -> None:
+        print(content)
 
-    def reverse(self) -> None:
-        print(self.content[::-1])
+    @staticmethod
+    def reverse(content: str, *_) -> None:
+        print(content[::-1])
 
 
 class PrintBook:
-    def __init__(self, title: str, content: str) -> None:
-        self.title = title
-        self.content = content
 
-    def console(self) -> None:
-        print(f"Printing the book: {self.title}...")
-        print(self.content)
+    @staticmethod
+    def console(content: str, title: str) -> None:
+        print(f"Printing the book: {title}...")
+        print(content)
 
-    def reverse(self) -> None:
-        print(f"Printing the book in reverse: {self.title}...")
-        print(self.content[::-1])
+    @staticmethod
+    def reverse(content: str, title: str) -> None:
+        print(f"Printing the book in reverse: {title}...")
+        print(content[::-1])
 
 
 class SerializeBook:
-    def __init__(self, title: str, content: str) -> None:
-        self.title = title
-        self.content = content
 
-    def json(self) -> str:
-        return json.dumps({"title": self.title, "content": self.content})
+    @staticmethod
+    def json(content: str, title: str) -> str:
+        return json.dumps({"title": title, "content": content})
 
-    def xml(self) -> str:
+    @staticmethod
+    def xml(content: str, title: str) -> str:
         root = ElementTree.Element("book")
-        title = ElementTree.SubElement(root, "title")
-        title.text = self.title
-        content = ElementTree.SubElement(root, "content")
-        content.text = self.content
+        xml_title = ElementTree.SubElement(root, "title")
+        xml_title.text = title
+        xml_content = ElementTree.SubElement(root, "content")
+        xml_content.text = content
         return ElementTree.tostring(root, encoding="unicode")
 
 
@@ -48,16 +46,16 @@ class Book:
     def __init__(self, title: str, content: str) -> None:
         self.title = title
         self.content = content
-        self.display = DisplayBook(content)
-        self.print = PrintBook(title, content)
-        self.serialize = SerializeBook(title, content)
+        self.display = DisplayBook()
+        self.print = PrintBook()
+        self.serialize = SerializeBook()
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
     for cmd, method_type in commands:
         command = getattr(book, cmd)
         command_attr = getattr(command, method_type)
-        data = command_attr()
+        data = command_attr(book.content, book.title)
         if data:
             return data
 
