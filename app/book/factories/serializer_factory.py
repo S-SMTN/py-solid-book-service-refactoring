@@ -3,7 +3,7 @@ from typing import Type
 from app.book.book_services.method_interface import IBookAction
 from app.book.book_services.serializer import (
     BookSerializerXML,
-    BookSerializerJSON
+    BookSerializerJSON,
 )
 from app.book.custom_exceptions.serializer_exceptions import (
     UnknownSerializeTypeError
