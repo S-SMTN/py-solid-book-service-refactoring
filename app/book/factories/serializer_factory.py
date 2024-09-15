@@ -5,7 +5,9 @@ from app.book.book_services.serializer import (
     BookSerializerXML,
     BookSerializerJSON
 )
-from app.book.custom_exceptions.serializer_exceptions import UnknownSerializeTypeError
+from app.book.custom_exceptions.serializer_exceptions import (
+    UnknownSerializeTypeError
+)
 from app.book.factories.method_factory_interface import BookMethodFactory
 
 

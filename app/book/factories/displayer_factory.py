@@ -5,7 +5,9 @@ from app.book.book_services.displayer import (
     BookDisplayerConsole,
     BookDisplayerReverse
 )
-from app.book.custom_exceptions.displayer_exceptions import UnknownDisplayTypeError
+from app.book.custom_exceptions.displayer_exceptions import (
+    UnknownDisplayTypeError
+)
 from app.book.factories.method_factory_interface import BookMethodFactory
 
 
