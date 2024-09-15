@@ -19,5 +19,4 @@ class BookDisplayerFactory(BookMethodFactory):
                 return BookDisplayerConsole
             case "reverse":
                 return BookDisplayerReverse
-            case _:
-                raise UnknownDisplayTypeError(display_type)
+        raise UnknownDisplayTypeError(display_type)

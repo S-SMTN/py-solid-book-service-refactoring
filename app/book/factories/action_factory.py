@@ -18,5 +18,4 @@ class BookActionFactory:
                 return BookPrinterFactory
             case "serialize":
                 return BookSerializerFactory
-            case _:
-                raise UnknownActionTypeError(action_type)
+        raise UnknownActionTypeError(action_type)

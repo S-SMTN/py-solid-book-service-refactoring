@@ -5,10 +5,10 @@ from app.book.book import Book
 class BookPrinterConsole(IBookAction):
     @staticmethod
     def method(book: Book) -> None:
-        print(book.content)
+        print(f"Printing the book: {book.title}...\n{book.content}")
 
 
 class BookPrinterReverse(IBookAction):
     @staticmethod
     def method(book: Book) -> None:
-        print(book.content[::-1])
+        print(f"Printing the book: {book.title}...\n{book.content[::-1]}")

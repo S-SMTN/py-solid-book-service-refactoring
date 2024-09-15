@@ -17,5 +17,4 @@ class BookPrinterFactory(BookMethodFactory):
                 return BookPrinterConsole
             case "reverse":
                 return BookPrinterReverse
-            case _:
-                raise UnknownPrintTypeError(print_type)
+        raise UnknownPrintTypeError(print_type)

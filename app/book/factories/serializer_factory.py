@@ -16,8 +16,7 @@ class BookSerializerFactory(BookMethodFactory):
     def get_book_method(serialize_type: str) -> Type[IBookAction]:
         match serialize_type:
             case "xml":
-                return BookSerializerJSON
-            case "html":
                 return BookSerializerXML
-            case _:
-                raise UnknownSerializeTypeError(serialize_type)
+            case "json":
+                return BookSerializerJSON
+        raise UnknownSerializeTypeError(serialize_type)
